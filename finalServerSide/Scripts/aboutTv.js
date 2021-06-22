@@ -406,11 +406,16 @@ function initChat() {
         var series = JSON.parse(localStorage["series"]);
         seriesName = series.seriesObj.Name;
     }
-    else
-        seriesName = "lucifer";
+    
     if (localStorage.user != null) {
         let tmp = JSON.parse(localStorage["user"]);
         userName = tmp.FirstName + " " + tmp.LastName;
+        userId = tmp.Id;
+
+        userTmp = {
+            name: userName,
+            id: userId
+        }
     }
     //pulling the name of tvshow from ls and insert there too
     ref = firebase.database().ref(seriesName);
@@ -418,7 +423,7 @@ function initChat() {
     listenToNewMessages();
     // listen to removing messages
     //listenToRemove();
-    ph = document.getElementById("ph");
+
     chat = document.getElementById("chat");
     //setTimeout(scrollChatDown, 1000);
     date = calcDay();
@@ -443,11 +448,16 @@ function listenToNewMessages() {
     ref.on("child_added", snapshot => {
 
         msg = {
-            name: snapshot.val().name,
+            user: snapshot.val().user,
             content: snapshot.val().msg,
             date: snapshot.val().date
         }
         msgArr.push(msg)
+        classStyle = "", imgAvatar = "";
+        if (userId == msg.user.id)
+            classStyle = ` media-chat-reverse`;
+        else
+            imgAvatar = `<img class="avatar" src="https://image.ibb.co/jw55Ex/def_face.jpg">`
         printMessage(msg);
     })
 }
@@ -472,23 +482,22 @@ function addMSG() { //add msg to the array of messages
     let content = document.getElementById("msgTB").value;
     let name = userName;//document.getElementById("nameTB").value;
 
-    if (name == "") {
-        alert("must enter a name");
-        return;
-    }
-    ref.push().set({ "msg": content, "name": name, "date": date });
+    //if (name == "") {
+    //    alert("must enter a name");
+    //    return;
+    //}
+    ref.push().set({ "msg": content, "user": userTmp, "date": date });
     setTimeout(scrollChatDown, 1);
     document.getElementById("msgTB").value = ""
 }
 
 function printToChat(msg) {/*class="media-body"*/
     return `<div class="media media-meta-day">` + msg.date + `</div>
-                                <div class="media media-chat media-chat-reverse">
-                                    <div class="media-body">
-                                        <p>`+ msg.name + `</p>
-                                        <p> ` + msg.content + `</p>
-                                </div>
-                            </div>`;
+                <div class="media media-chat `+ classStyle + `">
+                    <div class="media-body">` + imgAvatar + `
+                        <p> ` + msg.content + `</p>
+                </div>
+            </div>`;
 }
 ////////////////////////////////////////////////Chat////////////////////////////////////////////////
 

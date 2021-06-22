@@ -365,13 +365,3 @@ body {
     border: 1px solid #ccc;
     border-top: none;
 }
-
-.tab > button : focus {
-    background-color: lightcoral;
-}
-
-:focus {
-    background: pink;
-}
-
-
