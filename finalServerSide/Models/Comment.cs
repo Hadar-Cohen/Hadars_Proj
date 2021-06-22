@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Ex2.Models.DAL;
 
 namespace finalServerSide.Models.DAL
 {
