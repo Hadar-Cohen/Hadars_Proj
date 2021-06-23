@@ -10,21 +10,25 @@ using finalServerSide.Models.DAL;
 
 namespace finalServerSide.Controllers
 {
-    public class CommentsController : ApiController
+    public class SubCommentsController : ApiController
     {
         // GET api/<controller>
-        public List<Comment> Get(int seriesId)
+        public int Post([FromBody] SubComment com)
         {
-            Comment c = new Comment();
-            return c.Get(seriesId);
-        }
-       
-        // POST api/<controller>
-        public int Post([FromBody] Comment com)
-        {
-            com.PostComment();
+            com.PostSubComment();
             return com.SeriesId;
-                
+        }
+
+        // GET api/<controller>/5
+        public List<SubComment> Get(int seriesId, int commentId)
+        {
+            SubComment sc = new SubComment();
+            return sc.Get(seriesId, commentId);
+        }
+
+        // POST api/<controller>
+        public void Post([FromBody] string value)
+        {
         }
 
         // PUT api/<controller>/5

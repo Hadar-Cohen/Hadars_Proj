@@ -22,9 +22,10 @@
 
 
     <link href="aboutStyle.css" rel="stylesheet" />
+    <link href="navbarStyle.css" rel="stylesheet" />
     <link href="myStyle.css" rel="stylesheet" />
     <script src="../Scripts/signUp.js"></script>
-    <script src="../Scripts/insertHome.js"></script>
+    <!--<script src="../Scripts/insertHome.js"></script>-->
     <link href="homePage.css" rel="stylesheet" />
     <script src="../Scripts/navbarFunc.js"></script>
 
@@ -46,7 +47,7 @@
             getTopRated();  // Get similars Tv show
             getMostViewed();
             getMostViewedEpisodes();
-            getGanres()
+            getGenres()
 
         });
         ////////////////////////////////////top rated from the movie DB api - //////////////////////////////////////////////
@@ -221,50 +222,50 @@
         }
 
 
-        //////////////////////////////////////////search according ganre - /////////////////////////////////////////////////////////
-        function getGanres() {
-            ganresList = "<div> <select id='ganre' onchange=showSeriesAccoGanre(this.value)>";
-            ganresList += "<option value=" + null + "> select </option>";
+        //////////////////////////////////////////search according genre - /////////////////////////////////////////////////////////
+        function getGenres() {
+            genresList = "<div> <select id='genre' onchange=showSeriesAccoGenre(this.value)>";
+            genresList += "<option value=" + null + "> select </option>";
 
             let apiCall = url + "3/genre/tv/list?" + api_key;
-            ajaxCall("GET", apiCall, "", getSuccessGanres, errorGanres);
+            ajaxCall("GET", apiCall, "", getSuccessGenres, errorGenres);
         }
 
         r = 0; //index in result array that contain all the tv shows in the TMDB services
-        ganresArr = [];//local arrey to render and play onclick function
-        function getSuccessGanres(ganre) {
-            ganresArr = ganre.genres;
-            ganresArr.forEach(gan => {
-                ganresList += drawganres(gan);
+        genresArr = [];//local arrey to render and play onclick function
+        function getSuccessGenres(genre) {
+            genresArr = genre.genres;
+            genresArr.forEach(gan => {
+                genresList += drawGenres(gan);
                 r++;
             });
-            ganresList += "</select></div>";
-            $("#genreSearch").html(ganresList);
+            genresList += "</select></div>";
+            $("#genreSearch").html(genresList);
             r = 0;
 
         }
-        function errorGanres(err) {
+        function errorGenres(err) {
             console.log(err);
         }
-        function drawganres(ganre) {
-            console.log(ganre);
+        function drawGenres(genre) {
+            console.log(genre);
             str = "";
-            str += "<option value=" + ganre.id + ">" + ganre.name + "</option>";
-            // str = `<button id=` + ganre.id +` class="button button5">`+ganre.name+`</button>`
+            str += "<option value=" + genre.id + ">" + genre.name + "</option>";
+            // str = `<button id=` + genre.id +` class="button button5">`+genre.name+`</button>`
             return str;
         }
         /////////////
-        function showSeriesAccoGanre(ganerId) {
+        function showSeriesAccoGenre(ganerId) {
             seriesAccoGenreList = "<div class='container'>";
             seriesAccoGenreList += "<div class='row'>";
 
 
             let apiCall = url + "3/discover/tv?" + api_key + "&sort_by=popularity.desc&with_genres=" + ganerId;
-            ajaxCall("GET", apiCall, "", getSuccessTVShowGanres, errorGanres);
+            ajaxCall("GET", apiCall, "", getSuccessTVShowGenres, errorGenres);
         }
         r = 0; //index in result array that contain all the tv shows in the TMDB services
         seriesAccoGenreArr = [];//local arrey to render and play onclick function
-        function getSuccessTVShowGanres(seriess) {
+        function getSuccessTVShowGenres(seriess) {
             seriesAccoGenreArr = seriess.results;
             seriesAccoGenreArr.forEach(TVShow => {
                 seriesAccoGenreList += drawAccoGenre(TVShow);
@@ -341,7 +342,7 @@
             window.location.replace("insert_signup.html");
             // location.reload();
         }
-        ///////////in our prij we need Upper letters - property//////////
+        ///////////in our proj we need Upper letters - property//////////
         function storeToLsFromSeriesDB(tvShow) {
             seriesObj = {
                 Id: tvShow.Id,
@@ -372,12 +373,12 @@
     <nav class="navbar navbar-inverse ">
         <div class="container-fluid">
             <div class="navbar-header">
-                <!--<a class="navbar-brand" href="#">The Movie H & H</a>-->
+                <a class="navbar-brand" href="#">The Movie H & H</a>
             </div>
             <ul class="nav navbar-nav justify-content-between">
                 <li><div id="userName"></div></li>
                 <li><a class="toblack" href="homePage.html"> Home</a></li>
-                <li><a class="toblack" href="insert_signup.html">search</a></li>
+                <li><a class="toblack" href="insert_signup.html">Search</a></li>
                 <li><a class="toblack" id="view" href="view.html">View</a></li>
                 <li><a class="toblack" id="admin" href="admin.html">Admin</a></li>
 
@@ -385,8 +386,9 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li><a onclick="signUpClick()" id="signUp" class="toblack"><span class="glyphicon glyphicon-user singupc"></span> Sign Up</a></li>
-                <li><a id="login" href="login.html" class="toblack"><span class="glyphicon glyphicon-log-in "></span> Login</a></li>
-                <li><a onclick="exitFunc()" id="exit" class="toblack"><span class="glyphicon glyphicon-log-in "></span> Exit</a></li>
+                <li><a id="login" href="login.html" class="toblack"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+                <li><a href="editUser.html" id="editUser" class="toblack"><span class="glyphicon glyphicon-user singupc"></span>  Edit Profile</a></li>
+                <li><a onclick="exitFunc()" id="exit" class="toblack"><span class="glyphicon glyphicon-log-in "></span>  Exit</a></li>
             </ul>
         </div>
     </nav>

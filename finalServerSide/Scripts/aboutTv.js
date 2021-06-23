@@ -408,6 +408,7 @@ function initChat() {
     }
     
     if (localStorage.user != null) {
+        document.getElementById("chat").style.visibility = "visibility";
         let tmp = JSON.parse(localStorage["user"]);
         userName = tmp.FirstName + " " + tmp.LastName;
         userId = tmp.Id;
@@ -416,6 +417,9 @@ function initChat() {
             name: userName,
             id: userId
         }
+    }
+    else {
+        document.getElementById("chat").style.visibility = "hidden";
     }
     //pulling the name of tvshow from ls and insert there too
     ref = firebase.database().ref(seriesName);

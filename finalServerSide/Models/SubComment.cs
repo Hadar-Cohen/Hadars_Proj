@@ -6,17 +6,19 @@ using finalServerSide.Models.DAL;
 
 namespace finalServerSide.Models.DAL
 {
-    public class Comment
+    public class SubComment
     {
+        int subCommentId;
         int commentId;
         string currDate;
         int userId;
         string userName;
         int seriesId;
         string content;
-        public Comment() { }
-        public Comment(int commentId, string currDate, int userId, string userName, int seriesId, string content)
+        public SubComment() { }
+        public SubComment(int subCommentId, int commentId, string currDate, int userId, string userName, int seriesId, string content)
         {
+            this.subCommentId = subCommentId;
             this.commentId = commentId;
             this.currDate = currDate;
             this.userId = userId;
@@ -25,6 +27,7 @@ namespace finalServerSide.Models.DAL
             this.userName = userName;
         }
 
+        public int SubCommentId { get => subCommentId; set => subCommentId = value; }
         public int CommentId { get => commentId; set => commentId = value; }
         public string CurrDate { get => currDate; set => currDate = value; }
         public int UserId { get => userId; set => userId = value; }
@@ -33,16 +36,16 @@ namespace finalServerSide.Models.DAL
         public string Content { get => content; set => content = value; }
         
 
-        public int PostComment()
+        public int PostSubComment()
         {
-            CommentDBServices db = new CommentDBServices();
-            return db.Insert(this); //return 1/-1;
+            SubCommentDBServices db = new SubCommentDBServices();
+            return db.Insert(this); 
         }
 
-        public List<Comment> Get(int seriesId)
+        public List<SubComment> Get(int seriesId, int commentId)
         {
-            CommentDBServices db = new CommentDBServices();
-            return db.GetComments(seriesId);
+            SubCommentDBServices db = new SubCommentDBServices();
+            return db.GetSubComments(seriesId, commentId);
         }
     }
 }

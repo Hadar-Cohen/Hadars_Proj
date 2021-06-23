@@ -9,9 +9,8 @@ using System.Web.Configuration;
 
 namespace finalServerSide.Models.DAL
 {
-    public class CommentDBServices
-    {
-        //--------------------------------------------------------------------------------------------------
+    public class SubCommentDBServices
+    {//--------------------------------------------------------------------------------------------------
         // This method creates a connection to the database according to the connectionString name in the web.config 
         //--------------------------------------------------------------------------------------------------
         public SqlConnection connect(String conString)
@@ -46,7 +45,7 @@ namespace finalServerSide.Models.DAL
         //--------------------------------------------------------------------------------------------------
         // This method inserts a comment
         //--------------------------------------------------------------------------------------------------
-        public int Insert(Comment comment)
+        public int Insert(SubComment comment)
         {
             SqlConnection con;
             SqlCommand cmd;
@@ -89,13 +88,13 @@ namespace finalServerSide.Models.DAL
         //--------------------------------------------------------------------
         // Build the Insert command String
         //--------------------------------------------------------------------
-        private String BuildInsertCommand(Comment comment)
+        private String BuildInsertCommand(SubComment comment)
         {
             String command;
 
             StringBuilder sb = new StringBuilder();
             // use a string builder to create the dynamic string
-            sb.AppendFormat("Values('{0}', {1}, '{2}', {3}, '{4}')", comment.CurrDate, comment.UserId, comment.UserName, comment.SeriesId, comment.Content);
+            sb.AppendFormat("Values({0}, '{1}', {2}, '{3}', {4}, '{5}')", comment.CommentId, comment.CurrDate, comment.UserId, comment.UserName, comment.SeriesId, comment.Content);
             String prefix = "INSERT INTO Comments_2021 " + "([currDate], [userId],[userName],[seriesId],[content]) ";
             command = prefix + sb.ToString();
             return command;
@@ -104,16 +103,16 @@ namespace finalServerSide.Models.DAL
         //---------------------------------------------------------------------------------
         // Read from the DB into a list - dataReader
         //---------------------------------------------------------------------------------
-        public List<Comment> GetComments(int seriesId)
+        public List<SubComment> GetSubComments(int seriesId, int commentId)
         {
             SqlConnection con = null;
-            List<Comment> CommentsList = new List<Comment>();
+            List<SubComment> subCommentsList = new List<SubComment>();
 
             try
             {
                 con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
 
-                String selectSTR = "SELECT * FROM Comments_2021 WHERE seriesId = " + seriesId;
+                String selectSTR = "SELECT * FROM SubComments_2021 WHERE seriesId = " + seriesId + " and commentId= "+ commentId;
                 SqlCommand cmd = new SqlCommand(selectSTR, con);
 
                 // get a reader
@@ -121,17 +120,17 @@ namespace finalServerSide.Models.DAL
 
                 while (dr.Read())
                 {   // Read till the end of the data into a row
-                    Comment c = new Comment();
+                    SubComment c = new SubComment();
                     c.CommentId= Convert.ToInt32(dr["commentId"]);
                     c.CurrDate = (string)dr["currDate"];
                     c.UserId = Convert.ToInt32(dr["userId"]);
                     c.UserName = (string)(dr["userName"]);
                     c.SeriesId = Convert.ToInt32(dr["seriesId"]);
                     c.Content = (string)(dr["content"]);
-                    CommentsList.Add(c);
+                    subCommentsList.Add(c);
                 }
 
-                return CommentsList;
+                return subCommentsList;
             }
             catch (Exception ex)
             {

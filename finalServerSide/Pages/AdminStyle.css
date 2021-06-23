@@ -32,6 +32,10 @@ td > img {
 {
      background-color:aliceblue;
 }
+td > p > .overview{
+    text-align:left;
+    direction:ltr;
+}
     /*#seriesTable, #episodesTable{
     text-align: center;
 }
