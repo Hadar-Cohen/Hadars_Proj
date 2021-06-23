@@ -117,7 +117,7 @@
         }
         function addSubComment(commentId) {
             //closeDialog();
-            subCommentContent = $('#reply').val();
+            subCommentContent = $('.reply').val();
             let subComment = {
                 commentId: commentId,
                 currDate: date,
@@ -168,7 +168,7 @@
                             <dialog id="idDialog">
                                 <label for="reply">Reply:</label>
                                 <br>
-                                <input type="text" id="reply" class="reply" name="reply">
+                                <input type="text" class="reply" name="reply">
                                 <br>
                                 <button class="close" onclick="addSubComment(`+ comm.CommentId + `)">Close this Dialog</button>
                             </dialog>
