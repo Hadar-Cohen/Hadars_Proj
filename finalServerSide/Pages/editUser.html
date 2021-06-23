@@ -96,7 +96,11 @@
             updateUser();
             return false;
         }
-        
+
+        function cancel() {
+            clearForm();
+            window.location("homePage.html");
+        }
         function clearForm() {
             document.getElementById("pForm").reset();
         }
@@ -184,7 +188,7 @@
             <br/>
             <div class="clearfix">
                 <button id="submitBTN" type="submit" class="signupbtn">Update</button>
-                <button id="cancel" type="button" class="cancelbtn">Cancel</button>
+                <button id="cancel" type="button" class="cancelbtn" onclick="cancel">Cancel</button>
             </div>
         </div>
     </form>

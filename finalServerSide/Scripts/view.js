@@ -1,10 +1,10 @@
 ﻿function getSeriesSuccessCB(seriesNames) {
-    str = "";
+
     for (const s of seriesNames) {
         str += "<option value=" + s + ">" + s + "</option>";
     }
-    $("#series").html(str);
-
+    str += "</select>";
+    $("#phView").html(str);
 }
 function getSeriesErrorCB(err) {
     alert("Error -cant get the Series names");
@@ -12,7 +12,7 @@ function getSeriesErrorCB(err) {
 
 function showEpisodes(series) {
     var selectedText = series.options[series.selectedIndex].innerHTML;
-    initChat(selectedText);
+    //initChat(selectedText);
    
     let api = "../api/Totals?seriesName=" + selectedText + "&userId=" + userId;
     ajaxCall("GET", api, "", getEpisodesSuccessCB, Error);

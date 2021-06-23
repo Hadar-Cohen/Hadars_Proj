@@ -12,12 +12,13 @@
 
     method = "3/tv/";
     api_key = "api_key=" + key;
-
+    getSocialMedia();
     showTVData();
     getCredists();  // Get actors
     getRecommendations(); //    Get recommandation
     getSimilars();  // Get similars Tv show
     getReviews();   // Get the reviews for a TV show.
+    
 });
 
 //Header of the page -> Show the basic data of the TV show. Taking it from LS.
@@ -521,3 +522,35 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).scrollIntoView();
 }
 ////////////////////////////////////////////////Tabs////////////////////////////////////////////////
+
+function getSocialMedia() {
+    let apiCall = url + method + tvId + "/external_ids?" + api_key;
+    ajaxCall("GET", apiCall, "", getSocialSuccessCB, getSocialErrorCB);
+}
+
+function getSocialSuccessCB(socialLinks) {
+    console.log(socialLinks);
+    var link = "https://www.facebook.com/"
+    if (socialLinks.facebook_id != null) {
+        faceLink = link + socialLinks.facebook_id;
+    }
+
+    if (socialLinks.instagram_id != null) {
+        instaLink = link + socialLinks.instagram_id;
+    }
+
+    if (socialLinks.twitter_id != null) {
+        twitterLink = link + socialLinks.twitter_id;
+    }
+        
+    str =`<ul>
+            <li><a href="faceLink"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="twitterLink"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="instaLink"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+        </ul>`
+    $('#socialMediaLinks').html(str);
+}
+
+function getSocialErrorCB(err) {
+    alert("ERROR");
+}

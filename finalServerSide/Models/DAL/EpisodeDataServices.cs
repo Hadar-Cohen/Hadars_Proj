@@ -102,8 +102,8 @@ namespace Ex2.Models.DAL
             {
                 con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
 
-                String selectSTR = "SELECT E.* From Preferences_2021 as P inner join Episode_2021 as E on E.episodeId=P.episodeId order by P.preferencesCount DESC";
-                selectSTR += "Where E.seriesName= '" + seriesNameTmp + "' and P.userId= " + userId;
+                String selectSTR = "SELECT E.* From Preferences_2021 as P inner join Episode_2021 as E on E.episodeId=P.episodeId ";
+                selectSTR += "Where E.seriesName= '" + seriesNameTmp + "' and P.userId= " + userId + " order by E.preferencesCount DESC";
                 SqlCommand cmd = new SqlCommand(selectSTR, con);
 
                 // get a reader
