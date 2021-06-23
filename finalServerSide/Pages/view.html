@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+    <link href="navbarStyle.css" rel="stylesheet" />
     <link href="myStyle.css" rel="stylesheet" />
     <script>
         $(document).ready(function () {
@@ -50,26 +51,28 @@
     <script src="../Scripts/navbarFunc.js"></script>
     <script src="../Scripts/view.js"></script>
     <script src="../Scripts/viewChat.js"></script>
+
 </head>
 <body>
     <nav class="navbar navbar-inverse ">
         <div class="container-fluid">
             <div class="navbar-header">
-                <!--<a class="navbar-brand" href="#">The Movie H & H</a>-->
+                <a class="navbar-brand" href="#">The Movie H & H</a>
             </div>
             <ul class="nav navbar-nav justify-content-between">
                 <li><div id="userName"></div></li>
                 <li><a class="toblack" href="homePage.html"> Home</a></li>
-                <li><a class="toblack" id="search" href="insert_signup.html">Search</a></li>
+                <li><a class="toblack" href="insert_signup.html">Search</a></li>
                 <li><a class="toblack" id="view" href="view.html">View</a></li>
                 <li><a class="toblack" id="admin" href="admin.html">Admin</a></li>
 
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a onclick="signUpClick()" id="signUp" class="toblack"><span class="glyphicon glyphicon-user singup"></span> Sign Up</a></li>
-                <li><a id="login" href="login.html" class="toblack"><span class="glyphicon glyphicon-log-in "></span> Login</a></li>
-                <li><a onclick="exitFunc()" id="exit" class="toblack"><span class="glyphicon glyphicon-log-in "></span> Exit</a></li>
+                <li><a onclick="signUpClick()" id="signUp" class="toblack"><span class="glyphicon glyphicon-user singupc"></span> Sign Up</a></li>
+                <li><a id="login" href="login.html" class="toblack"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+                <li><a href="editUser.html" id="editUser" class="toblack"><span class="glyphicon glyphicon-user singupc"></span>  Edit Profile</a></li>
+                <li><a onclick="exitFunc()" id="exit" class="toblack"><span class="glyphicon glyphicon-log-in "></span>  Exit</a></li>
             </ul>
         </div>
     </nav>

@@ -52,7 +52,7 @@
             dialogElem.close();
         }
 
-        str = "";
+       /* str = "";*/
         function showForum(seriesId) {
             let api = "../api/Comments?seriesId=" + seriesId;
             ajaxCall("GET", api, "", getSuccessCB, getErrorCB)
@@ -60,7 +60,7 @@
         
         
         function getSuccessCB(commentsList) {
-            /*let str = "";*/
+            let str = "";
             //commentsArr = []; i = 0;
             for (const c of commentsList) {
                 //commentsArr[i] = c;
@@ -116,7 +116,7 @@
             console.log(err);
         }
         function addSubComment(commentId) {
-            closeDialog();
+            //closeDialog();
             subCommentContent = $('#reply').val();
             let subComment = {
                 commentId: commentId,
@@ -126,7 +126,8 @@
                 seriesId: seriesId,
                 content: subCommentContent
             }
-            ajaxCall("POST", "../api/SubComments", JSON.stringify(subComment), postSCommentSuccess, postSCommentError)
+            console.log(subComment);
+            ajaxCall("POST", "../api/SubComments", JSON.stringify(subComment), postSCommentSuccess, postSCommentError);
         }
 
         function postSCommentSuccess(series) {
@@ -172,7 +173,9 @@
                                 <button class="close" onclick="addSubComment(`+ comm.CommentId + `)">Close this Dialog</button>
                             </dialog>
                         </div>
-                    </div>`
+                    </div>
+                    <div id="`+ comm.CommentId + `"></div>`
+                    
         }
 
         function drawSubComment(comm) {

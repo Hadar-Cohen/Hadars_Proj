@@ -105,12 +105,6 @@
         ////////////////////////////////////// Seriess ///////////////////////////////////////////////////
 
         function getMostViewed() {
-            //mostViewedArr = "<div class='container'>";
-            //mostViewedArr += "<div class='row'>";
-            //$("#mostViewed").html(mostViewedArr);
-            mostViewedList = "<div class='container'>";
-            mostViewedList += "<div class='row'>";
-
             let api = "../api/Seriess";
             ajaxCall("GET", api, "", getSuccessMostViewed, errorMostViewed);
         }
@@ -118,16 +112,13 @@
         r = 0; //index in result array that contain all the tv shows in the TMDB services
         mostViewedArr = [];//local arrey to render and play onclick function
 
-        function getSuccessMostViewed(topV) {
-            console.log(topV);
-            mostViewedArr = topV;
-            mostViewedArr.forEach(TVShow => {
-                mostViewedList += drawMostViewed(TVShow);
+        function getSuccessMostViewed(topV) {           
+            mostViewedList = "<div style= 'display:flex; justify-content:center;' class='row'>";
+            while (r < 8) {
+                mostViewedList += drawMostViewed(topV[r]);
                 r++;
-                if (r > 7)
-                    errorMostViewed("we render 20 first seriess");
-            });
-            mostViewedList += "</div></div>";
+            }
+            mostViewedList += "</div>";
             $("#mostViewed").html(mostViewedList);
             r = 0;
         }
@@ -139,7 +130,7 @@
         function drawMostViewed(TVShow) {
             console.log(TVShow);
             let stars = 5;
-            let popularity = TVShow.popularity;
+            let popularity = TVShow.Popularity;
             switch (true) {
                 case (popularity < 40):
                     stars = 1
@@ -164,12 +155,6 @@
 
         ////////////////////////////////////// Episodes ///////////////////////////////////////////////////
         function getMostViewedEpisodes() {
-            //mostViewedArr = "<div class='container'>";
-            //mostViewedArr += "<div class='row'>";
-            //$("#mostViewed").html(mostViewedArr);
-            mostViewedEpisodesList = "<div class='container'>";
-            mostViewedEpisodesList += "<div class='row'>";
-
             let api = "../api/Episodes";
             ajaxCall("GET", api, "", getSuccessMostViewedEpisodes, errorMostViewedEpisodes);
         }
@@ -177,15 +162,13 @@
         mostViewedEpisodesArr = [];//local arrey to render and play onclick function
 
         function getSuccessMostViewedEpisodes(topV) {
-            console.log(topV);
-            mostViewedEpisodesArr = topV;
-            mostViewedEpisodesArr.forEach(TVShow => {
-                mostViewedEpisodesList += drawMostViewedEpisodes(TVShow);
+            mostViewedEpisodesList = "<div style= 'display:flex; justify-content:center;' class='row'>";
+
+            while (r < 8) {
+                mostViewedEpisodesList += drawMostViewedEpisodes(topV[r]);
                 r++;
-                if (r > 7)
-                    errorMostViewed("we render 20 first seriess");
-            });
-            mostViewedEpisodesList += "</div></div>";
+            }
+            mostViewedEpisodesList += "</div>";
             $("#mostViewedEpisodes").html(mostViewedEpisodesList);
             r = 0;
         }
@@ -195,29 +178,11 @@
         }
 
         function drawMostViewedEpisodes(TVShow) {
-            console.log(TVShow);
-            let stars = 5;
-            let popularity = TVShow.popularity;
-            switch (true) {
-                case (popularity < 40):
-                    stars = 1
-                    break;
-                case (popularity < 60):
-                    stars = 2
-                    break;
-                case (popularity < 200):
-                    stars = 3
-                    break;
-                case (popularity < 400):
-                    stars = 4
-                    break;
-            }
-            str = "";// onclick = 'showAboutFronOurWeb(mostViewedEpisodesArr[` + r + `])
+            str = "";
             str = `<div class='recommand-card'>
                        <img src='`+ TVShow.ImageURL + `'>
                        <h5><b>` + TVShow.SeriesName + "</b><br>Season" + TVShow.SeasonNum + `</h5>
-                       <h5>` + TVShow.EpisodeName + `</h5>
-                       <img class='starsPopularity' src= '../images/` + stars + `stars.png'/></div>`
+                       <h5>` + TVShow.EpisodeName + `</h5></div>`
             return str;
         }
 
