@@ -115,11 +115,11 @@
             alert("ERROR");
             console.log(err);
         }
-        function addSubComment(commentId) {
+        function addSubComment(commId) {
             closeDialog();
             subCommentContent = $('.reply').val();
             let subComment = {
-                commentId: commentId,
+                commentId: commId,
                 currDate: date,
                 userId: user.Id,
                 userName: user.FirstName + " " + user.LastName,
@@ -170,7 +170,7 @@
                                 <br>
                                 <input type="text" class="reply" name="reply">
                                 <br>
-                                <button class="close" onclick="addSubComment(`+ comm.CommentId + `)">Close this Dialog</button>
+                                <button id="`+ comm.CommentId + `" class="close" onclick="addSubComment(` + comm.CommentId +`)">Close this Dialog</button>
                             </dialog>
                         </div>
                     </div>
