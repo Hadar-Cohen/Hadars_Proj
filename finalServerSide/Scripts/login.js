@@ -30,7 +30,8 @@ function storeToLocalStorage(user) {
     let userToStore = {
         Id: user.Id,
         FirstName: user.FirstName,
-        LastName: user.LastName
+        LastName: user.LastName,
+        Email: user.Email
     }
     localStorage.setItem("user", JSON.stringify(userToStore));
 }
@@ -42,3 +43,12 @@ function getLoginErrorCB(err) {
         alert(err.status);
 }
 
+function getProfile() {
+    const ref = firebase.storage().ref();
+    ref.child(user.Email).getDownloadURL()
+        .then(url => {
+            console.log(url);
+            alert("image here!");
+            localStorage['profileSrc'] = url;
+        })
+}

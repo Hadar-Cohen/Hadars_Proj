@@ -52,8 +52,9 @@ function postSuccess(emailExist) {
         this.setCustomValidity('This email already exists');
     }
     else {
+        uploadImage();
         swal("Submitted to the server!", "Great Job", "success");
-        setTimeout(function () { location.href = 'login.html'; }, 3000);
+        //setTimeout(function () { location.href = 'login.html'; }, 3000);
     }
 }
 
@@ -69,6 +70,47 @@ function checkEmail(mail) {
 
 function exitFunc() {
     localStorage.clear();
-    document.location = 'insert_signup.html';
+    document.location = 'homePage.html';
     document.getElementById("pForm").reset();
 }
+
+
+////
+function uploadImage() {
+    const ref = firebase.storage().ref();
+
+    const file = document.querySelector("#photo").files[0];
+
+    const name = user.Email;
+    const metadata = {
+        contentType: file.type
+    }
+
+    const task = ref.child(name).put(file, metadata);
+    task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+            console.log(url)
+            alert("Img uplaod successfuly");
+            //localStorage.setItem("profileSrc", url);
+            //const image = document.querySelector('#image');
+            //image.src = url;
+            //localStorage['profileSrc'] = url;
+            //
+        })
+}
+
+//function getProfile() {
+//    const ref = firebase.storage().ref();
+//    ref.child(user.Email).getDownloadURL()
+//        .then(url => {
+//            console.log(url);
+//            alert("image here!");
+//            localStorage['profileSrc'] = url;
+//        })
+//}
+
+
+//localStorage.setItem("profileSrc", url);
+
+//localStorage['profileSrc'] = url;

@@ -27,8 +27,57 @@
     <script src="../Scripts/insert.js"></script>
     <script src="../Scripts/navbarFunc.js"></script>
     <script src="../Scripts/signUp.js"></script>
-    
-    
+
+    <!--//firebase-->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+    <script src="../Scripts/config.js"></script>
+
+    <!--<script>
+        function uploadImage() {
+            const ref = firebase.storage().ref();
+
+            const file = document.querySelector("#photo").files[0];
+
+            const name = new Date() + '-' + file.name;
+            const metadata = {
+                contentType: file.type
+            }
+
+            const task = ref.child(name).put(file, metadata);
+            task
+            .then(snapshot => snapshot.ref.getDownloadURL())
+            .then(url => {
+                console.log(url)
+                alert("Img uplaod successfuly");
+                const image = document.querySelector('#image');
+                image.src = url;
+            })
+
+        }
+
+        function storeToLS() {
+            const ref = firebase.storage().ref();
+            ref.child(user.Email).getDownloadURL()
+                .then(url => {
+                    console.log(url);
+                    alert("image here!");
+                    localStorage['profileSrc'] = url;
+                })
+        }
+       
+
+    </script>-->
+    <style>
+        #image{
+            height:100px;
+            width:75px;
+        }
+    </style>
 </head>
 
 <body>
@@ -142,6 +191,11 @@
                         <input type="text" id="search_input" placeholder="Address" required>
                         <input type="hidden" id="loc_lat" />
                         <input type="hidden" id="loc_long" />
+                    </div>
+                    <div>
+                        <input type="file" id="photo"/>
+                        <!--<img id="image"/>-->
+                        <!--<button type="button" onclick="uploadImage()">Upload Image</button>-->
                     </div>
 
                     <div class="clearfix">
