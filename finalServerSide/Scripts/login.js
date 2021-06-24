@@ -23,7 +23,7 @@ function getLoginSuccessCB(user) {
         setTimeout(function () { location.href = 'admin.html'; }, 3000);
     }
     else
-        setTimeout(function () { location.href = 'insert_signup.html'; }, 3000);
+        setTimeout(function () { location.href = 'homePage.html'; }, 3000);
 }
 
 function storeToLocalStorage(user) {
@@ -34,6 +34,7 @@ function storeToLocalStorage(user) {
         Email: user.Email
     }
     localStorage.setItem("user", JSON.stringify(userToStore));
+    storeProfile(userToStore.Email);
 }
 
 function getLoginErrorCB(err) {
@@ -43,12 +44,14 @@ function getLoginErrorCB(err) {
         alert(err.status);
 }
 
-function getProfile() {
+function storeProfile(email) {
     const ref = firebase.storage().ref();
-    ref.child(user.Email).getDownloadURL()
+    ref.child(email).getDownloadURL()
         .then(url => {
             console.log(url);
             alert("image here!");
-            localStorage['profileSrc'] = url;
+            //localStorage['profileSrc'] = url;
+            localStorage.setItem("profileSrc", JSON.stringify(url));
+
         })
 }

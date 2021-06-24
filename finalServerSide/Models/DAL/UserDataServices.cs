@@ -141,6 +141,7 @@ namespace Ex2.Models.DAL
                     u.Id = Convert.ToInt32(dr["id"]);
                     u.FirstName = (string)dr["firstName"];
                     u.LastName = (string)dr["lastName"];
+                    u.Email = (string)dr["email"];
                 }
                 return u;
             }
