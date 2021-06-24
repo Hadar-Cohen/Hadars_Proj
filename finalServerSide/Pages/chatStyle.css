@@ -94,6 +94,9 @@ h4.chatCard-title {
     overflow: hidden !important;
     -ms-overflow-style: none;
     background-color: #1e212d;
+    width: 150%;
+    margin-left: -28%;
+   
 }
 
 .media-chat {
@@ -121,14 +124,17 @@ h4.chatCard-title {
     border-radius: 100%;
     background-color: #f5f6f7;
     color: #8b95a5;
-    text-transform: uppercase
+    text-transform: uppercase;
+  
 }
 
 .media-chat .media-body {
     -webkit-box-flex: initial;
     flex: initial;
-/*    display: table
-*/}
+    width: inherit !important;
+    /*    display: table
+*/
+}
 
 .media-body {
     min-width: 0;
@@ -237,7 +243,8 @@ h4.chatCard-title {
     -webkit-box-align: center;
     align-items: center;
     padding: 12px 20px;
-    background-color: #f9fafb
+    background-color: #b3c0f2;
+    border-radius: 5px;
 }
 
     .publisher > *:first-child {
@@ -639,4 +646,11 @@ body {
         background: #47B6F5;
         right: -20px;
         transition: background 0.2s, right 0.2s;
+    }
+#buttonAddMSG {
+    border-radius: 10px;
+    color: #1e212d;
+}
+    #buttonAddMSG:hover {
+        background-color: #8196e6;
     }

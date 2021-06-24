@@ -1,5 +1,5 @@
 ﻿.title {
-    background-color: powderblue;
+    background-color: #b3c0f2;
     width: 100%;
     text-align: center;
     font-size: 20px;
@@ -78,7 +78,7 @@ body {
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    justify-content: center;
+    /*justify-content: center;*/
 }
 
 .actor-card {
@@ -98,7 +98,7 @@ body {
 }
 .actor-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    background-color: powderblue;
+    background-color: #b3c0f2;
 }
 
 .actor-card > img {
@@ -126,7 +126,7 @@ body {
 }
 
 #actor > h3{
-    background-color: powderblue;
+    background-color: #b3c0f2;
 }
 
 
@@ -157,7 +157,7 @@ body {
 
 .recommand-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    background-color: powderblue;
+    background-color: #b3c0f2;
 
 }
 
