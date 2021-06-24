@@ -1,69 +1,121 @@
 ﻿
-ul {
+
+.wrapper {
     position: absolute;
-    /*top: 50%;*/
-    /*bottom:10%;*/
-    left: 85%;
+    top: 50%;
+    left: 45%;
     transform: translate(-50%, -50%);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    z-index: 3;
+}
+
+ul {
+    list-style: none;
 }
 
     ul li {
-        list-style: none;
+        width: 50px;
+        height: 50px;
+        position: relative;
+        background: #e59500;
+        margin: 10px 0;
+        cursor: pointer;
+        border-radius: 3px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+     
     }
 
-        ul li a {
-            position: relative;
-            width: 60px;
-            height: 60px;
-            display: block;
-            text-align: center;
-            margin: 0 10px;
-            border-radius: 50%;
-            padding: 6px;
-            box-sizing: border-box;
-            text-decoration: none;
-            box-shadow: 0 10px 15px rgba(0,0,0,0.3);
-            background: linear-gradient(0deg, #ddd, #fff);
-            transition: .5s;
+        ul li .fa {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: #fff;
         }
 
-            ul li a:hover {
-                box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-                text-decoration: none;
-            }
-
-            ul li a .fab {
-                width: 100%;
-                height: 100%;
-                display: block;
-                background: linear-gradient(0deg, #fff, #ddd);
-                border-radius: 50%;
-                line-height: calc(60px - 12px);
-                font-size: 24px;
-                color: #262626;
-                transition: .5s;
-            }
-
-        ul li:nth-child(1) a:hover .fab {
-            color: #3b5998;
+        ul li.facebook {
+            background: #3b5998;
         }
 
-        ul li:nth-child(2) a:hover .fab {
-            color: #00aced;
+        ul li.twitter {
+            background: #00aced;
         }
 
-        ul li:nth-child(3) a:hover .fab {
-            color: #dd4b39;
+        ul li.instagram {
+            background: #bc2a8d;
         }
 
-/* ul li:nth-child(4) a:hover .fab {
-            color: #007bb6;
+
+
+        ul li.facebook div.slider {
+            background: #627aac;
         }
 
-        ul li:nth-child(5) a:hover .fab {
-            color: #e4405f;
-        }*/
+        ul li.twitter div.slider {
+            background: #7fd5f6;
+        }
+
+        ul li.instagram div.slider {
+            background: #dd94c6;
+        }
+
+
+
+.slider {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 51px;
+    width: 0px;
+    height: 50px;
+    background: #eebb5c;
+    border-radius: 3px;
+    transition: all 0.5s 0.3s ease; 
+}
+
+    .slider p {
+        font-family: arial;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 900;
+        color: #fff;
+        text-align: center;
+        line-height: 50px;
+        opacity: 0;
+        transition: all 0.6s ease;
+       
+    }
+
+ul li:hover .slider {
+    width: 180px;
+    transition: all 0.5s ease;
+}
+
+    ul li:hover .slider p {
+        opacity: 1;
+        transition: all 1s 0.2s ease;
+    }
+
+
+
+
+
+
+
+/* youtube link */
+.youtube {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 160px;
+    text-align: center;
+    padding: 15px 10px;
+    background: #bb0000;
+    border-radius: 5px;
+}
+
+    .youtube a {
+        text-decoration: none;
+        color: #fff;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+    }

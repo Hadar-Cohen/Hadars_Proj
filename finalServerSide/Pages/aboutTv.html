@@ -58,7 +58,7 @@
         }*/
     </style>
 
-    <link href="links.css" rel="stylesheet" />
+    <!--<link href="links.css" rel="stylesheet" />-->
 </head>
 <body onload="initChat()">
     <div class="header">
@@ -68,13 +68,13 @@
                 <h3 id="tvTitle"></h3>
                 <p id="overview"></p>
                 <div id="trailer"></div>
-                <div id="socialMediaLinks">
+                <!--<div id="socialMediaLinks">-->
                     <!--<ul>
                         <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
                         <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
                         <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
                     </ul>-->
-                </div>
+                <!--</div>-->
             </div>
         </div>
 
@@ -86,6 +86,7 @@
         <button class="tablinks" tabindex="3" onclick="openTab(event, 'Recommendations')">Recommendations</button>
         <button class="tablinks" tabindex="4" onclick="openTab(event, 'Similar')">Similar</button>
         <button class="tablinks" tabindex="5" onclick="openTab(event, 'Reviews'); window.dispatchEvent(new Event('resize'));">Reviews</button>
+        <button class="tablinks" tabindex="5" onclick="openTab(event, 'Links'); window.dispatchEvent(new Event('links'));">Links</button>
         <button id="chatTablinks" class="tablinks" tabindex="6" onclick="openTab(event, 'Chat'); setTimeout(scrollChatDown, 1);">Chat</button>
     </div>
 
@@ -117,6 +118,38 @@
     <div id="Reviews" class="tabcontent">
         <div class='title'><a>Reviews</a></div>
         <div id="reviews"></div>
+    </div>
+    <link href="links.css" rel="stylesheet" />
+    <div id="Links" class="tabcontent">
+        <div class='title'><a>Links</a></div>
+        <div id="links">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+            <div class="wrapper">
+                <ul>
+                    <li class="facebook">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                        <div class="slider">
+                            <p>facebook</p>
+                        </div>
+                    </li>
+
+                    <li class="twitter">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                        <div class="slider">
+                            <p>twitter</p>
+                        </div>
+                    </li>
+
+                    <li class="instagram">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                        <div class="slider">
+                            <p>instagram</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <div id="Chat" class="tabcontent">

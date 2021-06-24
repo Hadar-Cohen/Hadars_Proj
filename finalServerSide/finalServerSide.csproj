@@ -335,6 +335,7 @@
     <Content Include="Pages\homePage.html" />
     <Content Include="Pages\insert_signup.html" />
     <Content Include="Pages\links.css" />
+    <Content Include="Pages\linkTest.html" />
     <Content Include="Pages\login.html" />
     <Content Include="Pages\login_style_sheet.css" />
     <Content Include="Pages\modalView.css" />

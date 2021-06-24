@@ -18,6 +18,7 @@
     getRecommendations(); //    Get recommandation
     getSimilars();  // Get similars Tv show
     getReviews();   // Get the reviews for a TV show.
+    getLinks(); 
     /////////////jast members cat see chat///////////////
     if (localStorage.user == null)
         document.getElementById("chatTablinks").style.visibility = "hidden";
@@ -531,6 +532,7 @@ function getSocialMedia() {
 }
 
 function getSocialSuccessCB(socialLinks) {
+
     console.log(socialLinks);
     var link = "https://www.facebook.com/"
     if (socialLinks.facebook_id != null) {
@@ -555,4 +557,8 @@ function getSocialSuccessCB(socialLinks) {
 
 function getSocialErrorCB(err) {
     alert("ERROR");
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function getLinks() {
+
 }
