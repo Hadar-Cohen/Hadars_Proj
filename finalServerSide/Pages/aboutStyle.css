@@ -365,3 +365,11 @@ body {
     border: 1px solid #ccc;
     border-top: none;
 }
+
+media media-chat media-chat-reverse .media-body > .avatarChat {
+    height: 46px;
+    width: 43px;
+    display: flex;
+    justify-content: right;
+    border-radius: 25px;
+}

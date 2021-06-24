@@ -9,7 +9,7 @@
         series = JSON.parse(localStorage["series"]);
         tvId = series.seriesObj.Id;
     }
-
+    initChat();
     method = "3/tv/";
     api_key = "api_key=" + key;
     getSocialMedia();
@@ -416,10 +416,11 @@ function initChat() {
         let tmp = JSON.parse(localStorage["user"]);
         userName = tmp.FirstName + " " + tmp.LastName;
         userId = tmp.Id;
-
+        userProfile = JSON.parse(localStorage.profileSrc);
         userTmp = {
             name: userName,
-            id: userId
+            id: userId,
+            profile: userProfile
         }
     }
     else {
@@ -458,14 +459,16 @@ function listenToNewMessages() {
         msg = {
             user: snapshot.val().user,
             content: snapshot.val().msg,
-            date: snapshot.val().date
+            date: snapshot.val().date,
         }
-        msgArr.push(msg)
+        //msgArr.push(msg)
         classStyle = "", imgAvatar = "";
-        if (userId == msg.user.id)
+        if (userId == msg.user.id) {
             classStyle = ` media-chat-reverse`;
-        else
-            imgAvatar = `<img class="avatar" src="https://image.ibb.co/jw55Ex/def_face.jpg">`
+            /*imgAvatar = msg.user.profile;*/
+        }
+        //else
+        //    imgAvatar = `<img class="avatar" src="https://image.ibb.co/jw55Ex/def_face.jpg">`
         printMessage(msg);
     })
 }
@@ -480,7 +483,6 @@ function printMessages(msgArr) {
     var str = "";
     for (let index = 0; index < msgArr.length; index++) {
         const msg = msgArr[index];
-        //ph += "name: " + msg.name + ", content: " + msg.content + "<br/>";
         str += printToChat(msg);
     }
     chat.innerHTML += str;
@@ -494,15 +496,16 @@ function addMSG() { //add msg to the array of messages
     //    alert("must enter a name");
     //    return;
     //}
-    ref.push().set({ "msg": content, "user": userTmp, "date": date });
+    ref.push().set({ "msg": content, "user": userTmp, "date": date })
     setTimeout(scrollChatDown, 1);
     document.getElementById("msgTB").value = ""
 }
 
 function printToChat(msg) {/*class="media-body"*/
+    console.log(msg);
     return `<div class="media media-meta-day">` + msg.date + `</div>
                 <div class="media media-chat `+ classStyle + `">
-                    <div class="media-body">` + imgAvatar + `
+                    <div class="media-body"><img class= "avatarChat" src="` + msg.user.profile + `" style= "height: 46px; width: 43px; border-radius: 25px;">
                         <p> ` + msg.content + `</p>
                 </div>
             </div>`;
