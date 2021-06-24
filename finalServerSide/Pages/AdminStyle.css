@@ -36,11 +36,68 @@ td > p > .overview{
     text-align:left;
     direction:ltr;
 }
-    /*#seriesTable, #episodesTable{
-    text-align: center;
+
+
+
+
+.btn-group {
+    margin-top: 100px;
+    display: flex; /* Make the buttons appear below each other */
+    justify-content: center;
 }
-#seriesTable > td {
-        text-align: center;
-        background-color:red;
+
+.btn-group button {
+    background-color: #04AA6D; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    width: 200%; /* Set a width if needed */
+   
+    margin-top: 10px;
+}
+
+    .btn-group button:not(:last-child) {
+        border-bottom: none; /* Prevent double borders */
     }
-*/
+
+    /* Add a background color on hover */
+    .btn-group button:hover {
+        background-color: #3e8e41;
+    }
+.row {
+  
+    display: flex; /* Make the buttons appear below each other */
+    justify-content: center;
+}
+#yellowDiv {
+    background-color: yellow;
+    height: 70px;
+    width: 100px;
+    border-radius: 10px;
+    float: left;
+}
+
+#redDiv {
+    background-color: red;
+    height: 70px;
+    width: 100px;
+    border-radius: 10px;
+    float: left;
+}
+
+#pinkDiv {
+    background-color: pink;
+    height: 70px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+#blueDiv {
+    background-color: deepskyblue;
+    height: 70px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+ 

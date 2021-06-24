@@ -18,7 +18,9 @@
     getRecommendations(); //    Get recommandation
     getSimilars();  // Get similars Tv show
     getReviews();   // Get the reviews for a TV show.
-    
+    /////////////jast members cat see chat///////////////
+    if (localStorage.user == null)
+        document.getElementById("chatTablinks").style.visibility = "hidden";
 });
 
 //Header of the page -> Show the basic data of the TV show. Taking it from LS.

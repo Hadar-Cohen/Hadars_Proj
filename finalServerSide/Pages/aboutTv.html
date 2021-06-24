@@ -86,8 +86,7 @@
         <button class="tablinks" tabindex="3" onclick="openTab(event, 'Recommendations')">Recommendations</button>
         <button class="tablinks" tabindex="4" onclick="openTab(event, 'Similar')">Similar</button>
         <button class="tablinks" tabindex="5" onclick="openTab(event, 'Reviews'); window.dispatchEvent(new Event('resize'));">Reviews</button>
-        
-        <button class="tablinks" tabindex="6" onclick="openTab(event, 'Chat'); setTimeout(scrollChatDown, 1);">Chat</button>
+        <button id="chatTablinks" class="tablinks" tabindex="6" onclick="openTab(event, 'Chat'); setTimeout(scrollChatDown, 1);">Chat</button>
     </div>
 
     <div id="Actors" class="tabcontent">
