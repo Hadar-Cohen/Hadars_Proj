@@ -329,6 +329,7 @@
     <Content Include="Pages\chatTry.html" />
     <Content Include="Pages\comment.html" />
     <Content Include="Pages\commentStyle.css" />
+    <Content Include="Pages\editUser.css" />
     <Content Include="Pages\editUser.html" />
     <Content Include="Pages\homePage.css" />
     <Content Include="Pages\homePage.html" />

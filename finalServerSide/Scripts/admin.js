@@ -235,8 +235,9 @@ function createEpisodesTable(episodesdata) {
                 },
                 {
                     title: "Overview",
-                    data: "Overview"
-
+                    render: function (data, type, row, meta) {
+                        return "<p class='overview' style='text-align:left'>" + row.Overview.slice(0, 100) + "</p>";
+                    }
                 }
             ],
 

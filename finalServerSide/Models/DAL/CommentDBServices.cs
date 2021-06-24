@@ -148,5 +148,43 @@ namespace finalServerSide.Models.DAL
             }
         }
 
+        public int GetMostActivUser()
+        {
+            SqlConnection con = null;
+            Comment Comments = new Comment();
+
+            try
+            {
+                con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
+
+                String selectSTR = "SELECT userId FROM Comments_2021 GROUP BY userId ORDER BY count(userId) DESC";
+                SqlCommand cmd = new SqlCommand(selectSTR, con);
+
+                // get a reader
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection); // CommandBehavior.CloseConnection: the connection will be closed after reading has reached the end
+
+                if (dr.Read())
+                {   // Read till the end of the data into a row
+
+                    Comments.UserId = Convert.ToInt32(dr["userId"]);
+                }
+
+                return Comments.UserId;
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+
+            }
+        }
+
     }
 }

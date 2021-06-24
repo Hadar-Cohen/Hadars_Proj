@@ -44,5 +44,10 @@ namespace finalServerSide.Models.DAL
             CommentDBServices db = new CommentDBServices();
             return db.GetComments(seriesId);
         }
+        public int Get()
+        {
+            CommentDBServices db = new CommentDBServices();
+            return db.GetMostActivUser();
+        }
     }
 }
